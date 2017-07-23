@@ -1,0 +1,34 @@
+﻿<Window x:Class="PersonTracker.Gender"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PersonTracker"
+        mc:Ignorable="d"
+        Title="Gender" Height="245.854" Width="326.829">
+    <Grid>
+        <ListView x:Name="myList" 
+              Height="100" 
+              HorizontalAlignment="Left" 
+              Margin="28,25,0,0" 
+              VerticalAlignment="Top"
+              Width="261" RenderTransformOrigin="0.5,0.5" SelectionChanged="myList_SelectionChanged">
+            <ListView.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="-0.304"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-0.795"/>
+                </TransformGroup>
+            </ListView.RenderTransform>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="100" Header="Id"  DisplayMemberBinding="{Binding Path=Id}"></GridViewColumn>
+                    <GridViewColumn Width="100" Header="Name" DisplayMemberBinding="{Binding Path=Name}"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Label x:Name="lblMessage" Content="Label" HorizontalAlignment="Left" Margin="47,173,0,0" VerticalAlignment="Top" Height="38" Width="118"/>
+    </Grid>
+</Window>

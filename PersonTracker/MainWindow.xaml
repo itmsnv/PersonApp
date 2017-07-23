@@ -1,0 +1,44 @@
+﻿<Window x:Class="PersonTracker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PersonTracker"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800">
+    <Grid Margin="-12,-14,12.2,14.8">
+        <Button x:Name="btnSubmit" Content="Show Gender DataGrid" HorizontalAlignment="Left" Margin="52,438,0,0" VerticalAlignment="Top" Width="158" Height="42" Click="btnSubmit_Click" RenderTransformOrigin="1.122,0.811"/>
+        <Label x:Name="lblMessage" Content="Label" HorizontalAlignment="Left" Margin="52,310,0,0" VerticalAlignment="Top" Height="55" Width="326"/>
+        <Button x:Name="btnClose" Content="Close Program" HorizontalAlignment="Left" Margin="52,374,0,0" VerticalAlignment="Top" Width="158" Height="42" RenderTransformOrigin="1.122,0.811" Click="btnClose_Click"/>
+
+        <ListView x:Name="personList" 
+              Height="238" 
+              HorizontalAlignment="Left" 
+              Margin="48,60,0,0" 
+              VerticalAlignment="Top"
+              Width="461" RenderTransformOrigin="0.5,0.5" SelectionChanged="personList_SelectionChanged" MouseDoubleClick="personList_MouseDoubleClick" >
+
+            <ListView.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="-0.304"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-0.795"/>
+                </TransformGroup>
+            </ListView.RenderTransform>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="50" Header="Id"  DisplayMemberBinding="{Binding Path=Id}" ></GridViewColumn>
+                    <GridViewColumn Width="200" Header="Name" DisplayMemberBinding="{Binding Path=Name}"></GridViewColumn>
+                    <GridViewColumn Width="100" Header="Gender" DisplayMemberBinding="{Binding Path=Gender}"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="btnDeletePerson" Content="Delete Selected Person" HorizontalAlignment="Left" Margin="559,131,0,0" VerticalAlignment="Top" Width="159" Height="42" Click="btnDeletePerson_Click" RenderTransformOrigin="0.257,0.357" />
+
+        <Label x:Name="lblDelete"  Content="{Binding SelectedValue.Id, ElementName=personList}" HorizontalAlignment="Left" Margin="52,339,0,0" VerticalAlignment="Top" Width="362" ></Label>
+        <Button x:Name="btnUpdatePerson" Content="Update Selected Person" HorizontalAlignment="Left" Margin="559,199,0,0" VerticalAlignment="Top" Width="159" Height="42" Click="btnUpdatePerson_Click"/>
+        <Button x:Name="btnCreate" Content="Create New Person" HorizontalAlignment="Left" Margin="559,63,0,0" VerticalAlignment="Top" Width="159" Height="42" RenderTransformOrigin="4.16,2.411" Click="btnCreate_Click"/>
+        <Button x:Name="btnRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="335,374,0,0" VerticalAlignment="Top" Width="159" Height="39" Click="btnRefresh_Click"/>
+    </Grid>
+</Window>
