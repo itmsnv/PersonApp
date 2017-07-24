@@ -20,3 +20,18 @@ Using visual Studio 2017, you need to setup your environment.
 1.  Install SQLite Toolbox
 2.  Then install with Nuget Manager SQLite database engine.
 
+Below are the differenct SQLite Querries I run in the app:
+
+                //LOAD personList data-grid on startup.
+                SQLiteConnection conn = new SQLiteConnection(dbcon);
+                conn.Open();
+                SQLiteDataAdapter ad = new SQLiteDataAdapter();
+                SQLiteCommand cmd = new SQLiteCommand();
+                String str = "SELECT tblPerson.Id, tblPerson.Name, tblGender.Name as Gender FROM tblPerson left outer join tblGender on   tblGender.ID = tblPerson.GenderId;";
+                cmd.CommandText = str;
+                ad.SelectCommand = cmd;
+                cmd.Connection = conn;
+                DataSet ds = new DataSet();
+                ad.Fill(ds);
+                personList.ItemsSource = ds.Tables[0].DefaultView;
+                conn.Close();
